@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: #7C48EB;
+        }
+        h1{
+            color: white;
+            margin-bottom: 100px;
+        }
+        #calc{
+            background-color: white;
+            width: 350px;
+            height: 55px;
+            border-radius: 8px;
+            box-shadow: 3px 3px black;
+            padding: 0;
+            margin-bottom: 100px;
+
+        }
+        input{
+            margin-top: 15px;
+            margin-left: -40px;
+        
+        }
+        button{
+            margin-left: 15px;
+            border: 0;
+            background-color: #7C48EB;
+            color: white;
+            height: 25px;
+        }
+        .otp{
+            background-color: white;
+            display: inline-block;
+            width: 180px;
+            height: 90px;
+            box-shadow: 3px 3px black;
+            font-size: 35px;
+            margin-right: 30px;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <h1>AGE CALCULATOR</h1>
+        <div id="calc">
+            <input type="date" name="" id="date">
+            <button type="button" onclick="Calculate()"> CALCULATOR </button>
+        </div>
+        <div id="output">
+            <div class="otp" id="year"><b id="ans1">00</b> <br> YEARS </div>
+            <div class="otp" id="month"><b id="ans2">00</b><br> MONTHS</div>
+            <div class="otp" id="days"><b id="ans3">00</b><br> DAYS </div>
+        </div>
+    </center>
+    <script>
+        function Calculate(){
+            const a=document.getElementById("date").value;
+            const dat=new Date(a);
+            const today= new Date();
+            let years=today.getFullYear()-dat.getFullYear();
+            let month=today.getMonth()-dat.getMonth();
+            let days=today.getDate()-dat.getDate();
+            if(days<0){
+                month--;
+                const prevmont=new Date(today.getFullYear(),today.getMonth(),0);
+                days+=prevmont.getDate();
+            }
+            if(month<0){
+                years--;
+                month+=12;
+            }
+            const yr=document.getElementById("ans1");
+            const mn=document.getElementById("ans2");
+            const dy=document.getElementById("ans3");
+            console.log(today,dat);
+            yr.innerHTML=years;
+            mn.innerHTML=month;
+            dy.innerHTML=days;
+        }
+    </script>
+    
+</body>
+</html>
